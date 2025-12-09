@@ -4,8 +4,6 @@ var url = require('url');
 const MongoClient = require('mongodb').MongoClient;
 const PORT = process.env.PORT || 3000;
 const mongoUrl = "mongodb+srv://hayes:hayes1@productscluster.ruwrxk8.mongodb.net/?appName=productsCluster";
-const DB_NAME = 'Stock';
-const COLLECTION_NAME = 'PublicCompanies';
 
 let coll;
 
