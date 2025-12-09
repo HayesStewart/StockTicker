@@ -65,40 +65,25 @@ http.createServer(function (req, res) {
         res.end();
     }
     else if (pathname == "/process") {
-        // i) Get the form data
+        // form data
         var stockInput = query.stockInput || "";
         var searchType = query.searchType || "";
        
-        // ii) Determine whether searching by company name or ticker symbol
+        // search by companyName or ticker 
         var searchQuery = {};
        
         if (searchType === "ticker") {
-            // Case-insensitive exact match on stockTicker field
+            // case contol
             searchQuery = { stockTicker: stockInput.toUpperCase() };
            
         } else if (searchType === "company") {
-            // Case-insensitive partial match on companyName field
+            // case control for companyName 
             searchQuery = { companyName: stockInput};
         }
        
-        // iii) Find matching data in MongoDB database
+        // Finds matches in database
         coll.find(searchQuery).toArray()
             .then(results => {
-                // iv) Display the results in console
-                // if (results.length > 0) {
-                //     console.log(`Found ${results.length} matching result(s):\n`);
-                //     results.forEach((stock, index) => {
-                //         console.log(`Result ${index + 1}:`);
-                //         console.log(`  Name: ${stock.companyName}`);
-                //         console.log(`  Ticker: ${stock.stockTicker}`);
-                //         console.log(`  Price: $${stock.stockPrice}`);
-                //         console.log("");
-                //     });
-                // } else {
-                //     console.log("No Matching Stocks Found in the Database.");
-                // }
-               
-                // Display results on webpage
                 res.write(`
                     <!DOCTYPE html>
                     <html lang="en">
@@ -117,6 +102,7 @@ http.createServer(function (req, res) {
                     res.write("<ul>");
                     results.forEach(stock => {
                         res.write(`<li>${stock.companyName} (${stock.stockTicker}) - $${stock.stockPrice}</li>`);
+                        //displays data to console
                         console.log(stock.companyName + " " + stock.stockTicker + " " + stock.stockPrice);
                     });
                     res.write("</ul>");
@@ -131,7 +117,6 @@ http.createServer(function (req, res) {
                 res.end();
             })
             .catch(err => {
-                //res.write('<a href="/">Error. Back to Form</a>');
                 console.log("database Error" + err)
             });
     }
