@@ -37,21 +37,26 @@ http.createServer(function (req, res) {
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
-                <title>find</title>
+                <title>Find</title>
             </head>
             <body>
                 <h2>Stock Lookup</h2>
+            
                 <form action="/process" method="GET">
+            
                     <label for="stockInput">Enter Stock Ticker or Company Name:</label><br>
                     <input type="text" id="stockInput" name="stockInput" required><br><br>
-                   
+            
                     <label>Search Type:</label><br>
+            
                     <input type="radio" id="ticker" name="searchType" value="ticker" checked>
                     <label for="ticker">Ticker Symbol</label><br>
+            
                     <input type="radio" id="company" name="searchType" value="company">
                     <label for="company">Company Name</label><br><br>
-                   
+            
                     <button type="submit">Search</button>
+                    
                 </form>
             </body>
             </html>
