@@ -1,0 +1,25 @@
+{
+  "name": "webapp2",
+  "version": "1.0.0",
+  "description": "App for Stock Ticker Assignment Part 2",
+  "main": "webStockTicker.js",
+  "scripts": {
+  "start": "node webStockTicker.js"
+},
+  "repository": {
+  "type": "git",
+  "url": ""
+},
+"dependencies": {
+  "mongodb": "^6.0.0"
+},
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+  "url": ""
+},
+"engines": {
+   "node": "18.x"
+},
+  "homepage": ""
+}
